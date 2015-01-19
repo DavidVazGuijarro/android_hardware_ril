@@ -1,4 +1,4 @@
-# Copyright 2006 The Android Open Source Project
+# Copyright 2015 The Android Open Source Project
 
 ifneq ($(BOARD_PROVIDES_LIBRIL),true)
 
@@ -24,6 +24,10 @@ ifeq ($(SIM_COUNT), 2)
 endif
 
 LOCAL_MODULE:= libril
+
+ifeq ($(BOARD_USES_LEGACY_RIL),true)
+LOCAL_CFLAGS += -DLEGACY_RIL
+endif
 
 include $(BUILD_SHARED_LIBRARY)
 
